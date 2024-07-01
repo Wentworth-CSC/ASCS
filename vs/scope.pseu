@@ -1,0 +1,42 @@
+PROCEDURE ProcedureName(x: INTEGER, y: STRING)
+    DECLARE a: INTEGER
+    DECLARE Counter: INTEGER
+    OUTPUT "The value of y is: "
+    FOR Counter <- 1 TO LENGTH(Y) 
+        OUTPUT MID(y, Counter, 1)
+    NEXT Counter    
+ENDPROCEDURE
+
+PROCEDURE SWAP(BYREF x: INTEGER, BYREF y: INTEGER)
+    DECLARE temp: INTEGER
+    temp <- x
+    x <- y
+    y <- temp
+ENDPROCEDURE
+
+DECLARE Num1, Num2: INTEGER
+Num1 <- 5
+Num2 <- 10
+OUTPUT Num1, Num2
+CALL SWAP(Num1, Num2)
+OUTPUT Num1, Num2
+
+FUNCTION CountIf(Haystack: ARRAY [1:1000] OF INTEGER, Needle: INTEGER) RETURNS INTEGER
+    DECLARE Counter: INTEGER
+    DECLARE Count: INTEGER
+    Count <- 0
+    FOR Counter <- 1 TO LENGTH(Haystack)
+        IF Haystack[Counter] = Needle THEN
+            Count <- Count + 1
+        ENDIF
+    NEXT Counter
+    RETURN Count
+ENDFUNCTION
+
+
+//Main Code:
+
+CALL ProcedureName(5, "Bob")
+
+X <- FuncName()
+

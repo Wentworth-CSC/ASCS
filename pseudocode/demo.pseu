@@ -1,0 +1,57 @@
+// This is a comment!
+// This is another comment!
+DECLARE Counter: INTEGER
+DECLARE Price: REAL
+DECLARE Name: STRING
+DECLARE IsReady: BOOLEAN
+DECLARE Initial: CHAR
+DECLARE Today: DATE
+
+Counter <- 0
+Price <- 0.0
+Name <- "John"
+IsReady <- TRUE
+Initial <- 'J'
+Today <- 2018-01-01
+
+CONSTANT PI <- 3.14159
+CONSTANT MAX <- 100
+
+DECLARE People: ARRAY[1:MAX] OF STRING
+DECLARE Ages: ARRAY[1:MAX] OF INTEGER
+DECLARE Scores: ARRAY[1:MAX] OF REAL
+
+People[1] <- "John"
+People[2] <- "Mary"
+
+FOR Counter <- 1 TO MAX
+    Ages[Counter] <- 0
+    Scores[Counter] <- 0.0
+NEXT Counter
+
+IF IsReady = TRUE THEN
+    OUTPUT "Hello, World!"
+ELSE
+    OUTPUT "Goodbye, World!"
+ENDIF
+
+CASE OF Initial
+    'A': OUTPUT "Apple"
+    'B': OUTPUT "Banana"
+    'C': OUTPUT "Cherry"
+    OTHERWISE: OUTPUT "Unknown"
+ENDCASE
+
+OUTPUT "Please enter your name: "
+INPUT Name
+
+Counter <- 1
+WHILE Counter < 10 
+    OUTPUT Counter
+    Counter <- Counter + 1
+ENDWHILE
+
+REPEAT
+    OUTPUT Counter
+    Counter <- Counter - 1
+UNTIL Counter = 0

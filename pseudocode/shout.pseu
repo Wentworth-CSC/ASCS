@@ -1,0 +1,5 @@
+DECLARE Phrase: STRING
+INPUT Phrase
+OUTPUT TO_UPPER(Phrase)
+
+

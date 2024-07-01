@@ -1,0 +1,16 @@
+DECLARE Phrase: STRING
+DECLARE OutPhrase: STRING
+DECLARE Counter: INTEGER
+
+OutPhrase <- ""
+INPUT Phrase
+
+FOR Counter <- 1 TO LENGTH(Phrase)
+    IF MID(Phrase, Counter, 1) = " " THEN
+        OutPhrase <- OutPhrase + "..."
+    ELSE
+        OutPhrase <- OutPhrase + MID(Phrase, Counter, 1)
+    ENDIF
+NEXT Counter
+
+OUTPUT OutPhrase
