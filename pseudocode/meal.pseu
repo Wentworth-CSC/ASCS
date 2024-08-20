@@ -1,0 +1,21 @@
+DECLARE Time: STRING
+DECLARE Counter: INTEGER
+DECLARE Hour: INTEGER
+
+INPUT Time
+
+IF MID(Time, 3, 1) = ":" THEN
+    Hour <- STR_TO_INT(LEFT(Time, 2))
+ELSE
+    Hour <- STR_TO_INT(LEFT(Time, 1))
+ENDIF
+
+IF Hour = 7 OR Time = "8:00" THEN
+    OUTPUT "Breakfast Time"
+ENDIF
+IF Hour = 12 OR Time = "13:00" THEN
+    OUTPUT "Lunch Time"
+ENDIF
+IF Hour = 18 OR Time = "19:00" THEN
+    OUTPUT "Dinner Time"
+ENDIF

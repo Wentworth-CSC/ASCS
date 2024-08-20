@@ -1,0 +1,13 @@
+DECLARE Greeting: STRING
+
+INPUT Greeting
+
+IF TO_UPPER(MID(Greeting, 1, 5)) = "HELLO" THEN
+    OUTPUT "$0"
+ELSE
+    IF TO_UPPER(MID(Greeting, 1, 1)) = "H" THEN
+        OUTPUT "$20"
+    ELSE
+        OUTPUT "$100"
+    ENDIF
+ENDIF

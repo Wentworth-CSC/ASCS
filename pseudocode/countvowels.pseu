@@ -1,0 +1,11 @@
+PROCEDURE CountVowels(Statement: STRING)
+DECLARE Count: INTEGER
+DECLARE Character: CHAR
+
+Statement <- TO_LOWER(Statement)
+FOR Count <- 1 TO LENGTH(Statement)
+    Character <- MID(Statement, Count, 1)
+    
+
+NEXT Count
+ENDPROCEDURE

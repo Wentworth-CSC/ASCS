@@ -1,0 +1,13 @@
+PROCEDURE RandList()
+    DECLARE Counter: INTEGER
+    DECLARE Number: INTEGER
+    CONSTANT Size = 100
+    Number <- 0
+    // GENERATE 25 random numbers each one larger than the previous
+    // and output these to the screen
+    FOR Counter <- 1 TO 25
+        Number <- Number + INT(RAND(Size) + 1) 
+        // +1 to ensure that duplicates do not occur if random gives 0
+        OUTPUT Number
+    NEXT Counter
+ENDPROCEDURE

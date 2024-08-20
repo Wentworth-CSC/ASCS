@@ -1,0 +1,30 @@
+DECLARE Expression: STRING
+DECLARE First_Number: INTEGER
+DECLARE Second_Number: INTEGER
+DECLARE Found_Operator: BOOLEAN
+DECLARE Operator: CHAR
+DECLARE Counter: INTEGER
+
+INPUT Expression
+
+Counter = 1
+Found_Operator = FALSE
+
+REPEAT
+    Operator = MID(Expression, Counter, 1)
+    IF Operator = "+" OR Operator = "-" OR Operator = "*" OR Operator = "/" THEN
+        Found_Operator = TRUE
+        First_Number = STR_TO_NUM(SUBSTRING(Expression, 1, Counter - 1))
+        Second_Number = STR_TO_NUM(SUBSTRING(Expression, Counter + 1, LENGTH(Expression) - Counter))
+    ELSE
+        Counter = Counter + 1
+    ENDIF
+UNTIL Found_Operator OR Counter > LENGTH(Expression)
+    
+CASE Operator OF
+    "+": OUTPUT First_Number + Second_Number
+    "-": OUTPUT First_Number - Second_Number
+    "*": OUTPUT First_Number * Second_Number
+    "/": OUTPUT First_Number / Second_Number
+    OTHERWISE: OUTPUT "Invalid Operator"
+ENDCASE

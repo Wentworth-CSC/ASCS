@@ -1,0 +1,41 @@
+TYPE Node
+    DECLARE Payload: STRING
+    DECLARE Next: INTEGER
+ENDTYPE
+
+DECLARE List: ARRAY[1:100] OF Node
+DECLARE Head: INTEGER
+
+Head <- 1
+
+// Insert a new node at the head of the list
+PROCEDURE InsertAtHead(newPayload: STRING)
+    DECLARE newNode: Node
+    newNode.Payload <- newPayload
+    newNode.Next <- Head
+    Head <- Head + 1
+    List[Head - 1] <- newNode
+ENDPROCEDURE
+
+// Insert a new node at the tail of the list
+PROCEDURE InsertAtTail(newPayload: STRING)
+    DECLARE newNode: Node
+    DECLARE currentNode: INTEGER
+    DECLARE nextNode: INTEGER
+    DECLARE foundTail: BOOLEAN
+    currentNode <- Head
+    foundTail <- FALSE
+    WHILE foundTail = FALSE
+        nextNode <- List[currentNode].Next
+        IF nextNode = 0
+            foundTail <- TRUE
+        ELSE
+            currentNode <- nextNode
+        ENDIF
+    ENDWHILE
+    newNode.Payload <- newPayload
+    newNode.Next <- 0
+    List[currentNode].Next <- Head
+    Head <- Head + 1
+    List[Head - 1] <- newNode
+ENDPROCEDURE

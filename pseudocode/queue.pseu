@@ -1,0 +1,37 @@
+DECLARE Queue: ARRAY[1:10] OF INTEGER
+DECLARE FrontOfQueue, BackOfQueue: INTEGER
+
+FrontOfQueue <- 0
+BackOfQueue <- 0
+
+PROCEDURE Enqueue(Value: INTEGER)
+    IF BackOfQueue = 10 THEN
+        IF FrontOfQueue = 0  THEN
+            OUTPUT "Queue is full"
+        ELSE
+            BackOfQueue <- 1
+            Queue[BackOfQueue] <- Value
+        ENDIF
+    ELSE
+        IF FrontOfQueue = BackOfQueue THEN
+            OUTPUT "Queue is full"
+        ELSE
+            BackOfQueue <- BackOfQueue + 1
+            Queue[BackOfQueue] <- Value
+        ENDIF
+    ENDIF
+ENDPROCEDURE
+
+FUNCTION Dequeue() RETURNS INTEGER
+    IF FrontOfQueue = BackOfQueue THEN
+        OUTPUT "Queue is empty"
+        RETURN -1
+    ELSE
+        IF FrontOfQueue = 10 THEN
+            FrontOfQueue <- 0
+        ENDIF
+        FrontOfQueue <- FrontOfQueue + 1
+        RETURN Queue[FrontOfQueue]
+    ENDIF
+
+ENDFUNCTION

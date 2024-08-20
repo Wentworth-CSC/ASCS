@@ -1,0 +1,14 @@
+DECLARE Filename: STRING
+INPUT Filename
+CASE OF TO_LOWER(RIGHT(Filename, 4))
+    ".gif": OUTPUT = "image/gif"
+    ".jpg": OUTPUT = "image/jpeg"
+    "jpeg": IF TO_LOWER(RIGHT(Filename, 5)) = ".jpeg" THEN 
+                OUTPUT = "image/jpeg"
+            ENDIF
+    ".png": OUTPUT = "image/png"
+    ".pdf": OUTPUT = "application/pdf"
+    ".txt": OUTPUT = "test/text"
+    ".zip": OUTPUT = "application/zip"
+    OTHERWISE: OUTPUT = "application/octet-stream"
+ENDCASE

@@ -1,0 +1,10 @@
+DECLARE Response: STRING
+
+INPUT Response
+
+IF Response = "42" OR TO_UPPER(response) = "FORTY-TWO" OR TO_UPPER(response) = "FORTY TWO" 
+  THEN
+    OUTPUT "Yes"
+ELSE
+    OUTPUT "No"
+ENDIF

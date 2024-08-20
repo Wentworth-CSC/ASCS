@@ -1,0 +1,13 @@
+DECLARE RNum: ARRAY[1:100] OF INTEGER
+DECLARE Counter: INTEGER
+DECLARE NumbersInRange: INTEGER
+NumbersInRange <- 0
+
+FOR Counter <- 1 TO 100
+    RNum[Counter] <- INT(RAND(200)) + 1
+    IF RNum[Counter] >= 66 AND RNum[Counter] <= 173 THEN
+        NumbersInRange <- NumbersInRange + 1
+    ENDIF
+NEXT Counter
+
+OUTPUT NumbersInRange

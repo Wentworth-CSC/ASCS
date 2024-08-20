@@ -1,0 +1,11 @@
+PROCEDURE Select(Start, End: INTEGER)
+    DECLARE index, total, count, Value1, Value2 INTEGER
+    FOR count <- Start+1 TO end-1
+        value1 = count MOD 10
+        Value2 = (count DIV 10) MOD 10
+        IF value1 + value2 = 6
+          THEN
+            OUTPUT count
+        ENDIF
+    NEXT count
+ENDPROCEDURE

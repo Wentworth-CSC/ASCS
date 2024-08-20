@@ -1,0 +1,21 @@
+DECLARE Filename: STRING
+DECLARE Counter: INTEGER
+DECLARE Line: STRING
+INPUT Filename
+
+OPENFILE Filename FOR WRITE
+FOR Counter <- 1 TO 10
+    WRITEFILE Filename Counter + " " + "Hello World!"
+NEXT Counter
+CLOSEFILE Filename
+
+
+
+OPENFILE Filename FOR READ
+WHILE NOT EOF(Filename)
+    READFILE Filename Line
+    OUTPUT Line
+ENDWHILE
+CLOSEFILE Filename
+
+

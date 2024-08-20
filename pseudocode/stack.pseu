@@ -1,0 +1,33 @@
+DECLARE Stack: ARRAY[1:10] OF INTEGER
+DECLARE TopOfStack: INTEGER
+
+TopOfStack <- 0
+
+PROCEDURE Push(BYVAL Value: INTEGER)
+    IF TopOfStack = 10 THEN
+        OUTPUT "Stack is full"
+    ELSE
+        TopOfStack <- TopOfStack + 1
+        Stack[TopOfStack] <- Value
+    ENDIF
+ENDPROCEDURE
+
+FUNCTION Pop() RETURNS INTEGER
+    IF TopOfStack = 0 THEN
+        OUTPUT "Stack is empty"
+        RETURN 0
+    ELSE
+        TopOfStack <- TopOfStack - 1
+        RETURN Stack[TopOfStack + 1]
+    ENDIF
+ENDFUNCTION
+
+CALL Push(5)
+CALL Push(8)
+CALL Push(12)
+OUTPUT Pop()
+OUTPUT Pop()
+CALL Push(13)
+OUTPUT Pop()
+OUTPUT Pop()
+

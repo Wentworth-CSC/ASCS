@@ -1,0 +1,106 @@
+// Primitive Data Types
+DECLARE Count: INTEGER
+DECLARE Score: REAL
+DECLARE Grade: CHAR
+DECLARE Passed: BOOLEAN
+DECLARE DoB: DATE
+
+// Composite Data Types
+DECLARE Name: STRING
+DECLARE Heights: ARRAY[1:10] OF REAL
+DECLARE TicTacToe: ARRAY[1:3, 1:3] OF CHAR
+TYPE Student
+    DECLARE Name: STRING
+    DECLARE Age: INTEGER
+    DECLARE Grade: CHAR
+ENDTYPE
+DECLARE Student1: Student
+DECLARE Students: ARRAY[1:10] OF Student
+
+Name <- "Bobby"
+Heights[1] <- 1.75
+TicTacToe[1, 1] <- 'X'
+Student1.Name <- "Alice"
+Student1.Age <- 18
+Student1.Grade <- 'A'
+Students[1].Name <- "Bob"
+
+DECLARE Counter: INTEGER
+DECLARE Sum: INTEGER
+DECLARE Age: INTEGER
+DECLARE Max, Min: INTEGER
+Max <- -1
+Min <- 101
+Counter <- 0
+WHILE Counter < 10
+    INPUT Age
+    Sum <- Sum + Age
+    Counter <- Counter + 1
+    IF Age > Max THEN
+        Max <- Age
+    ENDIF
+    IF Age < Min THEN
+        Min <- Age
+    ENDIF
+ENDWHILE
+OUTPUT "Average: ", Sum / Counter
+OUTPUT "Max: ", Max
+OUTPUT "Min: ", Min
+
+FUNCTION LinearSearch(Haystack: ARRAY[1:54] OF INTEGER, Needle: INTEGER): INTEGER
+    DECLARE Index: INTEGER
+    Index <- 1
+    WHILE Index <= 54
+        IF Haystack[Index] = Needle THEN
+            RETURN Index
+        ENDIF
+        Index <- Index + 1
+    ENDWHILE
+    RETURN -1
+ENDFUNCTION
+
+
+
+FUNCTION BinarySearch(Haystack: ARRAY[1:54] OF INTEGER, Needle: INTEGER): INTEGER
+    //We assume that the haystack is sorted in ascending order
+    DECLARE Low, High, Mid: INTEGER
+    Low <- 1
+    High <- 54
+    WHILE Low <= High
+        Mid <- (Low + High) / 2
+        IF Haystack[Mid] = Needle THEN
+            RETURN Mid
+        ELSE 
+            IF Haystack[Mid] < Needle THEN
+                Low <- Mid + 1
+            ELSE
+                High <- Mid - 1
+            ENDIF
+        ENDIF
+    ENDWHILE
+    RETURN -1
+ENDFUNCTION
+
+FUNCTION BubbleSort(Array: ARRAY[1:54] OF INTEGER): ARRAY[1:54] OF INTEGER
+    DECLARE Swapped: BOOLEAN
+    DECLARE Temp: INTEGER
+    DECLARE Index: INTEGER
+    DECLARE End: INTEGER
+    End <- 54
+    Swapped <- TRUE
+    WHILE Swapped 
+        Swapped <- FALSE
+        Index <- 1
+        WHILE Index < End
+            IF Array[Index] > Array[Index + 1] THEN
+                Temp <- Array[Index]
+                Array[Index] <- Array[Index + 1]
+                Array[Index + 1] <- Temp
+                Swapped <- TRUE
+            ENDIF
+            Index <- Index + 1
+        ENDWHILE
+        End <- End - 1
+    ENDWHILE
+    RETURN Array
+ENDFUNCTION

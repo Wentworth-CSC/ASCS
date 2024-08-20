@@ -1,0 +1,38 @@
+FUNCTION IgnoreWord(WordToCheck: STRING) RETURNS BOOLEAN
+    DECLARE Counter: INTEGER
+    FOR Counter <- 1 TO 10
+        IF TO_LOWER(WordToCheck) = IgnoreList[Counter] THEN
+            RETURN TRUE
+        ENDIF
+    NEXT Counter
+    RETURN FALSE
+
+    /// Another Approack
+    Counter <- 1
+    WHILE TO_LOWER(WordToCheck) <> IgnoreList[Counter] AND Counter <= 10
+        Counter <- Counter + 1
+    ENDWHILE
+    IF TO_LOWER(WordToCheck) = IgnoreList[Counter] THEN
+        RETURN TRUE
+    ELSE
+        RETURN FALSE
+    ENDIF
+
+ENDFUNCTION
+
+
+PROCEDURE GetInitials()
+    // Go through FNString to either ignore a word, or output an Initial
+    DECLARE Initials: STRING
+    DECLARE WordCounter: INTEGER
+    DECLARE CurrentWordPos: STRING
+    WordCounter <- 1 
+    WHILE GetStart(WordCounter) > 0
+        IF NOT IgnoreWord(GetWord(GetStart(WordCounter))) THEN
+            Initials <- Initials & MID(GetWord(GetStart(WordCounter)), 1, 1)
+        ENDIF
+        WordCounter <- WordCounter + 1
+    ENDWHILE
+    OUTPUT TO_UPPER(Initials)
+ENDPROCEDURE
+
