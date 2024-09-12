@@ -1,0 +1,26 @@
+FUNCTION DeleteSpaces(Line : STRING) RETURNS STRING
+    WHILE LEFT(Line, 1) = " " 
+        Line <- RIGHT(Line, LENGTH(Line) - 1)
+    ENDWHILE
+    RETURN Line
+ENDFUNCTION
+
+PROCEDURE Stage_2(Infile: STRING, Outfile: STRING)
+    DECLARE Line: STRING
+    DECLARE BlankDeleted: INTEGER
+    BlankDeleted <- 0
+    OPENFILE Infile FOR READ
+    OPENFILE Outfile FOR APPEND
+    WHILE NOT EOF(Infile)
+        READFILE Infile, Line
+        Line <- DeleteSpaces(DeleteComment(Line))
+        IF LENGTH(Line) > 0 THEN    
+            WRITEFILE Outfile, Line
+        ELSE
+            BlankDeleted <- BlankDeleted + 1
+        ENDIF
+    ENDWHILE
+    CLOSEFILE Infile
+    CLOSEFILE Outfile
+    OUTPUT "Completed Stage 2, " & NUM_TO_STR(BlankDeleted) & " empty lines removed"
+ENDPROCEDURE
